@@ -1,0 +1,11 @@
+{
+  "name": "mongodb-replset-configurator",
+  "version": "0.0.0",
+  "description": "MongoDB ReplSet Configurator",
+  "main": "index.js",
+  "dependencies": {
+    "mongodb": "^1.4.10"
+  },
+  "devDependencies": {},
+  "repository": {}
+}
