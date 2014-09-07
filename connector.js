@@ -10,27 +10,25 @@ var getServer = function(host) {
   return new Server(tokens[0], tokens[1] || 27017);
 };
 
-var getConfig = function(id, master, slaves) {
+var getConfig = function(id, servers) {
   var config = {
     _id: id,
-    members:[
-      { _id : 0, host : master }
-    ]
+    members:[]
   };
 
-  _.each(slaves, function(slave, index) {
+  _.each(servers, function(server, index) {
     config.members.push({
-      _id: index + 1,
-      host: slave
+      _id: index,
+      host: server
     });
   });
 
   return config;
 };
 
-exports.open = function(id, master, slaves) {
-  var db = new Db('local', getServer(master), { w: 1 });
-  var config = getConfig(id, master, slaves);
+exports.open = function(id, servers) {
+  var db = new Db('local', getServer(servers[0]), { w: 1 });
+  var config = getConfig(id, servers);
 
   var deferred = Q.defer();
 
