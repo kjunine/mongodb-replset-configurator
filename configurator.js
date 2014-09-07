@@ -47,6 +47,7 @@ exports.configure = function(id, db, config, forceReconfig) {
           return reconfig(db, config);
         } else {
           console.log('Already configured.. current config:', currentConfig);
+          return false;
         }
       } else {
         console.log('Initializing.. config:', config);

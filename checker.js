@@ -31,15 +31,15 @@ var summarize = function(status) {
   };
 };
 
-var check = exports.check = function(db) {
-  return Q.delay(1000)
+var check = exports.check = function(db, delay) {
+  return Q.delay(delay)
     .then(function() {
       return configurator.getStatus(db);
     })
     .then(function(status) {
       console.log('Current status:', summarize(status));
       if (!isConfigured(status)) {
-        return check(db);
+        return check(db, 2000);
       }
     });
 };

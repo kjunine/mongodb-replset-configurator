@@ -14,8 +14,9 @@ if (!servers) return console.log('The environment variable MRSC_SERVERS is requi
 connector.open(id, servers)
   .spread(function(db, config) {
     return configurator.configure(id, db, config, reconfig)
-      .then(function() {
-        return checker.check(db);
+      .then(function(configured) {
+        var delay = configured ? 2000 : 0;
+        return checker.check(db, delay);
       })
       .finally(function() {
         db.close();
