@@ -14,7 +14,10 @@ var isConfigured = function(status) {
   var secondaryCount = _.filter(states, function(state) {
     return state === 'SECONDARY';
   }).length;
-  return primaryCount === 1 && secondaryCount === count - 1;
+  var arbiterCount = _.filter(states, function(state) {
+    return state === 'ARBITER';
+  }).length;
+  return primaryCount === 1 && secondaryCount + arbiterCount === count - 1;
 };
 
 var summarize = function(status) {

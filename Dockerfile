@@ -1,8 +1,8 @@
 FROM kjunine/nodejs
 MAINTAINER Daniel Ku "kjunine@gmail.com"
 
-ADD . /root/mrsc
-WORKDIR /root/mrsc
+ADD . /mrsc
+WORKDIR /mrsc
 
 RUN npm install
 

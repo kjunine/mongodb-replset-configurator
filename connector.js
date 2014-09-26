@@ -10,7 +10,7 @@ var getServer = function(host) {
   return new Server(tokens[0], tokens[1] || 27017);
 };
 
-var getConfig = function(id, servers) {
+var getConfig = function(id, servers, arbiters) {
   var config = {
     _id: id,
     members:[]
@@ -23,12 +23,22 @@ var getConfig = function(id, servers) {
     });
   });
 
+  var offset = servers.length;
+
+  _.each(arbiters, function(arbiter, index) {
+    config.members.push({
+      _id: offset + index,
+      host: arbiter,
+      arbiterOnly: true
+    });
+  });
+
   return config;
 };
 
-exports.open = function(id, servers) {
+exports.open = function(id, servers, arbiters) {
   var db = new Db('local', getServer(servers[0]), { w: 1 });
-  var config = getConfig(id, servers);
+  var config = getConfig(id, servers, arbiters);
 
   var deferred = Q.defer();
 
