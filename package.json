@@ -1,13 +1,27 @@
 {
   "name": "mongodb-replset-configurator",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "MongoDB ReplSet Configurator",
   "main": "index.js",
+  "keywords": [
+    "mongodb-replset-configurator",
+    "mongodb",
+    "replication"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kjunine/mongodb-replset-configurator.git"
+  },
+  "homepage": "https://github.com/kjunine/mongodb-replset-configurator",
+  "author": {
+    "name": "Daniel Ku",
+    "email": "kjunine@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "bluebird": "^2.3.2",
     "lodash": "^2.4.1",
     "mongodb": "^1.4.10"
   },
-  "devDependencies": {},
-  "repository": {}
+  "devDependencies": {}
 }
