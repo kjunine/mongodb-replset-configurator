@@ -1,6 +1,6 @@
-FROM kjunine/nodejs:latest
+FROM node:0.10
 MAINTAINER Daniel Ku "kjunine@gmail.com"
-ENV REFRESHED_AT 2014-11-01
+ENV REFRESHED_AT 2015-02-07
 
 ADD . /mrsc
 WORKDIR /mrsc
